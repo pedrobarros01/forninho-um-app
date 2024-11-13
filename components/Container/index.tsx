@@ -7,7 +7,7 @@ interface ContainerProps {
 }
 export default function Container({children}: ContainerProps){
     return(
-        <Box flex={1} backgroundColor="$forninhoBackground">
+        <Box flex={1} backgroundColor="$forninhoBackground" >
             <ScrollView
                 style={{
                 height: '100%',
