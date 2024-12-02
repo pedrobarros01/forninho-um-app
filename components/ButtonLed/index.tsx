@@ -7,6 +7,7 @@ import { ToastTitle } from "@gluestack-ui/themed";
 import { ToastDescription } from "@gluestack-ui/themed";
 import { AppError } from "../../utils/AppError";
 import Loading from "../Loading";
+import { BASE_URL_BACKEND } from "../../services/api";
 export interface ButtonLedProps {
     id: number;
     ledLigado: boolean
@@ -21,7 +22,7 @@ export default function ButtonLed({id, ledLigado}: ButtonLedProps){
             setLoading(true);
             console.log(ligado);
             if(!ligado){
-                const url = `http://192.168.88.242:8000/led/on/${id}`;
+                const url = `${BASE_URL_BACKEND}/led/on/${id}`;
                 const response = await fetch(url);
         
                 if (!response.ok) {
@@ -32,7 +33,7 @@ export default function ButtonLed({id, ledLigado}: ButtonLedProps){
                 console.log('LED controlado com sucesso:', data);
                 
             }else{
-                const url = `http://192.168.88.242:8000/led/off/${id}`;
+                const url = `${BASE_URL_BACKEND}/led/off/${id}`;
                 const response = await fetch(url);
         
                 if (!response.ok) {
@@ -74,7 +75,7 @@ export default function ButtonLed({id, ledLigado}: ButtonLedProps){
         justifyContent="space-around"
         w={170}
         h={90}
-        bgColor={(id === 3 || id === 4 || id === 0) ? `$ledVermelho${ledLigado ? 'Ativado' : 'Desativado'}` : (id === 1 || id === 6 || id === 7) ? `$ledAmarelo${ledLigado ? 'Ativado' : 'Desativado'}` : `$ledVerde${ledLigado ? 'Ativado' : 'Desativado'}`}
+        bgColor={`$ledAmareloAtivado`}
         alignItems="center"
         rounded='$3xl'
         marginBottom='$8'
